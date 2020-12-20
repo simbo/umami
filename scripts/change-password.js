@@ -4,7 +4,11 @@ const chalk = require('chalk');
 const prompts = require('prompts');
 const { PrismaClient } = require('@prisma/client');
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  __internal: {
+    useUds: false,
+  },
+});
 const SALT_ROUNDS = 10;
 
 const runQuery = async query => {
